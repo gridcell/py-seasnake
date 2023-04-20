@@ -1,8 +1,14 @@
 [tool.poetry]
-name = "py-mermaid"
+name = "mermaid"
 version = "0.1.0"
 description = "A Python wrapper for accessing and managing MERMAID data with ease."
 authors = ["Dustin Sampson <gridcell@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://gridcell.github.io/py-mermaid/"
+repository = "https://github.com/gridcell/py-mermaid"
+documentation = "https://gridcell.github.io/py-mermaid/"
+keywords = ["MERMAID", "coral", "fish"]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.12"

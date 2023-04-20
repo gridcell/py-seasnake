@@ -1,0 +1,73 @@
+site_name: PyMermaid
+# site_url: https://example.com/
+theme:
+  name: material
+  favicon: docs/img/favicon.ico
+  repo_name: gridcell/pymermaid
+  repo_url: https://github.com/gridcell/pymermaid
+  # include_homepage_in_sidebar: false
+  logo: img/logo.png
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline 
+        name: Switch to dark mode
+      primary: blue
+      accent: light-blue 
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode    
+      primary: black
+      accent: white
+
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/gridcell
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/gridcell
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  # - pymdownx.inlinehilite
+  # - pymdownx.snippets
+  # - admonition
+  # - pymdownx.arithmatex:
+  #     generic: true
+  # - footnotes
+  # - pymdownx.details
+  # - pymdownx.superfences
+  # - pymdownx.mark
+  # - attr_list
+  # - pymdownx.emoji:
+  #     emoji_index: !!python/name:materialx.emoji.twemoji
+  #     emoji_generator: !!python/name:materialx.emoji.to_svg
+copyright: |
+  &copy; 2023 <a href="https://github.com/gridcell"  target="_blank" rel="noopener">Dustin Sampson</a>
+plugins:
+  - mkdocstrings
+
+nav:
+    - Home: index.md
+    - Authentication: auth.md
+    - Projects: projects.md
+    - Summaries:
+      - Benthic LIT: summaries/benthic_lit.md
+      - Benthic Photo Quadrat: summaries/benthic_photo_quadrat.md
+      - Benthic PIT: summaries/benthic_pit.md
+      - Bleaching: summaries/bleaching.md
+      - Fish Belt: summaries/fish_belt.md
+      - Habitat Complexity: summaries/habitat_complexity.md
+      - Sample Event: summaries/sample_event.md

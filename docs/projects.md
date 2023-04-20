@@ -1,0 +1,3 @@
+# Projects
+
+::: mermaid.projects.Project

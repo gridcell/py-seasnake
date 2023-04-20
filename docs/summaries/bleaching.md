@@ -1,0 +1,3 @@
+# Bleaching
+
+::: mermaid.summaries.Bleaching
