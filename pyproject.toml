@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "py-mermaid"
+version = "0.1.0"
+description = "A Python wrapper for accessing and managing MERMAID data with ease."
+authors = ["Dustin Sampson <gridcell@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.12"
+pandas = "^2.0.0"
+PyJWT = "^2.6.0"
+textual = "^0.19.1"
+mkdocs-material = "^9.1.6"
+mkdocstrings = {extras = ["python"], version = "^0.21.2"}
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.2"
+black = "^23.3.0"
+isort = "^5.12.0"
+ruff = "^0.0.261"
+mypy = "^1.2.0"
+pytest-mypy = "^0.10.3"
+pandas-stubs = "^1.5.3"
+mkdocs = "^1.4.2"
+pytest-ruff = "^0.0.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 10
