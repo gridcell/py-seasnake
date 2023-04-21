@@ -1,3 +1,3 @@
 # Benthic PIT
 
-::: mermaid.summaries.BenthicPIT
+::: seasnake.summaries.BenthicPIT

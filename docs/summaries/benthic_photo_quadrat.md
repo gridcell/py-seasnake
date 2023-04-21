@@ -1,3 +1,3 @@
 # Benthic Photo Quadrat
 
-::: mermaid.summaries.BenthicPhotoQuadrat
+::: seasnake.summaries.BenthicPhotoQuadrat

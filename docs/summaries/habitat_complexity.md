@@ -1,3 +1,3 @@
 # Habitat Complexity
 
-::: mermaid.summaries.HabitatComplexity
+::: seasnake.summaries.HabitatComplexity

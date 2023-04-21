@@ -1,10 +1,10 @@
-site_name: PyMermaid
+site_name: SeaSnake
 # site_url: https://example.com/
 theme:
   name: material
   favicon: docs/img/favicon.ico
-  repo_name: gridcell/pymermaid
-  repo_url: https://github.com/gridcell/pymermaid
+  repo_name: gridcell/py-seasnake
+  repo_url: https://github.com/gridcell/py-seasnake
   # include_homepage_in_sidebar: false
   logo: img/logo.png
   features:

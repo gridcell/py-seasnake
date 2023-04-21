@@ -1,3 +1,3 @@
 # Sample Event
 
-::: mermaid.summaries.SampleEvent
+::: seasnake.summaries.SampleEvent

@@ -1,4 +1,4 @@
-from ..base import MermaidBase, pd, requires_token
+from ..base import DataFrame, MermaidBase, requires_token
 
 
 class HabitatComplexity(MermaidBase):
@@ -11,7 +11,7 @@ class HabitatComplexity(MermaidBase):
     """
 
     @requires_token
-    def observations(self, project_id: str) -> pd.DataFrame:
+    def observations(self, project_id: str) -> DataFrame:
         """
         Retrieves a project's habitat complexity observations.
 
@@ -20,13 +20,13 @@ class HabitatComplexity(MermaidBase):
             habitat complexity observations.
 
         Returns:
-            pd.DataFrame
+            DataFrame
         """
         url = f"/projects/{project_id}/habitatcomplexities/obshabitatcomplexities/"
         return self.data_frame_from_url(url)
 
     @requires_token
-    def sample_units(self, project_id: str) -> pd.DataFrame:
+    def sample_units(self, project_id: str) -> DataFrame:
         """
         Retrieves a project's habitat complexity observations aggregated by sample units.
 
@@ -35,13 +35,13 @@ class HabitatComplexity(MermaidBase):
             habitat complexity sample units.
 
         Returns:
-            pd.DataFrame
+            DataFrame
         """
         url = f"/projects/{project_id}/habitatcomplexities/sampleunits/"
         return self.data_frame_from_url(url)
 
     @requires_token
-    def sample_events(self, project_id: str) -> pd.DataFrame:
+    def sample_events(self, project_id: str) -> DataFrame:
         """
         Retrieves a project's habitat complexity observations aggregated by sample events.
 
@@ -50,7 +50,7 @@ class HabitatComplexity(MermaidBase):
             habitat complexity sample events.
 
         Returns:
-            pd.DataFrame
+            DataFrame
         """
         url = f"/projects/{project_id}/habitatcomplexities/sampleevents/"
         return self.data_frame_from_url(url)

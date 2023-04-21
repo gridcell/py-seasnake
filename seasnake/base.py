@@ -4,6 +4,7 @@ import urllib.request
 from typing import Any, Dict, Generator, List, Optional, Tuple, Union
 
 import pandas as pd
+from pandas import DataFrame
 
 PROJECT_STATUS_OPEN = 90
 PROJECT_STATUS_TEST = 80
@@ -80,7 +81,7 @@ class MermaidBase:
         columns: Optional[Union[List[str], Tuple[str]]] = None,
         rename_columns: Optional[Dict[str, str]] = None,
         requires_auth: bool = True,
-    ) -> pd.DataFrame:
+    ) -> DataFrame:
         headers = headers or {}
         query_params = query_params or {}
 
@@ -90,7 +91,7 @@ class MermaidBase:
         if requires_auth and "Authorization" not in headers:
             headers["Authorization"] = f"Bearer {self.token}"
 
-        df = pd.DataFrame(
+        df = DataFrame(
             self.fetch_list(
                 url,
                 query_params=query_params,
@@ -100,17 +101,17 @@ class MermaidBase:
             )
         )
 
-        if columns:
-            df = pd.DataFrame(df[columns])
-
         if rename_columns:
             df = df.rename(columns=rename_columns)
+
+        if columns:
+            df = DataFrame(df[columns])
 
         return df
 
     def flatten(
-        self, df: pd.DataFrame, column: str, prefix: Optional[str] = None
-    ) -> pd.DataFrame:
+        self, df: DataFrame, column: str, prefix: Optional[str] = None
+    ) -> DataFrame:
         prefix = prefix or column
         return df.join(
             pd.json_normalize(df[column].tolist()).add_prefix(f"{prefix}.")

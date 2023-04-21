@@ -1,4 +1,4 @@
-from ..base import MermaidBase, pd
+from ..base import DataFrame, MermaidBase
 
 
 class SampleEvent(MermaidBase):
@@ -7,7 +7,7 @@ class SampleEvent(MermaidBase):
     across various projects.
     """
 
-    def summary(self, limit_columns: bool = True, flatten: bool = True) -> pd.DataFrame:
+    def summary(self, limit_columns: bool = True, flatten: bool = True) -> DataFrame:
         """
         Get a summary of sample events data from MERMAID.
 
@@ -23,7 +23,7 @@ class SampleEvent(MermaidBase):
             the DataFrame. Defaults to True.
 
         Returns:
-            pd.DataFrame
+            DataFrame
         """
         columns = [
             "project",

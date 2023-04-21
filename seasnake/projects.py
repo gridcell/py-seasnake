@@ -1,6 +1,6 @@
 from typing import List, Optional, Union
 
-from .base import MermaidBase, pd
+from .base import DataFrame, MermaidBase
 
 
 class Project(MermaidBase):
@@ -16,14 +16,14 @@ class Project(MermaidBase):
 
     PROJECT_STATUS_OPEN = 90
 
-    def my_projects(self) -> pd.DataFrame:
+    def my_projects(self) -> DataFrame:
         """
         Get a list of your projects.
 
         This method retrieves a list of your projects.
 
         Returns:
-            pd.DataFrame
+            DataFrame
         """
         url = "/projects/"
         return self.data_frame_from_url(url)
@@ -34,7 +34,7 @@ class Project(MermaidBase):
         countries: Union[None, str, List[str]] = None,
         tags: Union[None, str, List[str]] = None,
         include_test_projects: bool = False,
-    ) -> pd.DataFrame:
+    ) -> DataFrame:
         """
         Searches all MERMAID projects and filters results based on the specified criteria.
 
@@ -49,7 +49,7 @@ class Project(MermaidBase):
             the search results. Defaults to False.
 
         Returns:
-            pd.DataFrame
+            DataFrame
         """
 
         url = "/projects/"

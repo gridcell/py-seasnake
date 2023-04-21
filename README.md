@@ -1,20 +1,20 @@
-PyMermaid
----------
+SeaSnake
+--------
 
-PyMermaid is a powerful and user-friendly Python wrapper that enables seamless interaction with MERMAID (Marine Ecological Research Management Aid) platform. It allows researchers, data scientists, and marine enthusiasts to access, analyze, and manage their marine ecosystem data directly through Python scripts or Jupyter Notebooks.
+SeaSnake is a user-friendly Python wrapper that enables seamless interaction with MERMAID (Marine Ecological Research Management Aid) platform. It allows researchers, data scientists, and marine enthusiasts to access, analyze, and manage their marine ecosystem data directly through Python scripts or Jupyter Notebooks.
 
 
 # Install
 
-`pip install -u py-mermaid`
+`pip install -u py-seasnake`
 
 
 # Quick Start
 
 ```
-from mermaid import auth, tables
-from mermaid.auth import MermaidAuth
-from mermaid.summaries import FishBelt
+from seasnake import auth
+from seasnake.auth import MermaidAuth
+from seasnake.summaries import FishBelt
 
 auth = MermaidAuth()
 token = auth.request_token()

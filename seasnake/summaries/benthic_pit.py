@@ -1,4 +1,4 @@
-from ..base import MermaidBase, pd, requires_token
+from ..base import DataFrame, MermaidBase, requires_token
 
 
 class BenthicPIT(MermaidBase):
@@ -11,7 +11,7 @@ class BenthicPIT(MermaidBase):
     """
 
     @requires_token
-    def observations(self, project_id: str) -> pd.DataFrame:
+    def observations(self, project_id: str) -> DataFrame:
         """
         Retrieves a project's Benthic PIT observations.
 
@@ -19,13 +19,13 @@ class BenthicPIT(MermaidBase):
             project_id (str): The ID of the project for which to fetch Benthic PIT observations.
 
         Returns:
-            pd.DataFrame
+            DataFrame
         """
         url = f"/projects/{project_id}/benthicpits/obstransectbenthicpits/"
         return self.data_frame_from_url(url)
 
     @requires_token
-    def sample_units(self, project_id: str) -> pd.DataFrame:
+    def sample_units(self, project_id: str) -> DataFrame:
         """
         Retrieves a project's Benthic PIT observations aggregated by sample units.
 
@@ -33,13 +33,13 @@ class BenthicPIT(MermaidBase):
             project_id (str): The ID of the project for which to fetch Benthic PIT sample units.
 
         Returns:
-            pd.DataFrame
+            DataFrame
         """
         url = f"/projects/{project_id}/benthicpits/sampleunits/"
         return self.data_frame_from_url(url)
 
     @requires_token
-    def sample_events(self, project_id: str) -> pd.DataFrame:
+    def sample_events(self, project_id: str) -> DataFrame:
         """
         Retrieves a project's Benthic PIT observations aggregated by sample events.
 
@@ -47,7 +47,7 @@ class BenthicPIT(MermaidBase):
             project_id (str): The ID of the project for which to fetch Benthic PIT sample events.
 
         Returns:
-            pd.DataFrame
+            DataFrame
         """
         url = f"/projects/{project_id}/benthicpits/sampleevents/"
         return self.data_frame_from_url(url)

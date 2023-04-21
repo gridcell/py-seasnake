@@ -1,3 +1,3 @@
 # Bleaching
 
-::: mermaid.summaries.Bleaching
+::: seasnake.summaries.Bleaching

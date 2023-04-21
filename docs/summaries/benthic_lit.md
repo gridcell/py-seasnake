@@ -1,3 +1,3 @@
 # Benthic LIT
 
-::: mermaid.summaries.BenthicLIT
+::: seasnake.summaries.BenthicLIT

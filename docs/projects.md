@@ -1,3 +1,3 @@
 # Projects
 
-::: mermaid.projects.Project
+::: seasnake.projects.Project

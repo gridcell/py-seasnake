@@ -1,4 +1,4 @@
-from ..base import MermaidBase, pd, requires_token
+from ..base import DataFrame, MermaidBase, requires_token
 
 
 class BenthicPhotoQuadrat(MermaidBase):
@@ -11,7 +11,7 @@ class BenthicPhotoQuadrat(MermaidBase):
     """
 
     @requires_token
-    def observations(self, project_id: str) -> pd.DataFrame:
+    def observations(self, project_id: str) -> DataFrame:
         """
         Retrieves a project's Benthic Photo Quadrat observations.
 
@@ -20,13 +20,13 @@ class BenthicPhotoQuadrat(MermaidBase):
             Benthic Photo Quadrat observations.
 
         Returns:
-            pd.DataFrame
+            DataFrame
         """
         url = f"/projects/{project_id}/benthicpqts/obstransectbenthicpqts/"
         return self.data_frame_from_url(url)
 
     @requires_token
-    def sample_units(self, project_id: str) -> pd.DataFrame:
+    def sample_units(self, project_id: str) -> DataFrame:
         """
         Retrieves a project's Benthic Photo Quadrat observations aggregated by sample units.
 
@@ -35,13 +35,13 @@ class BenthicPhotoQuadrat(MermaidBase):
             Benthic Photo Quadrat sample units.
 
         Returns:
-            pd.DataFrame
+            DataFrame
         """
         url = f"/projects/{project_id}/benthicpqts/sampleunits/"
         return self.data_frame_from_url(url)
 
     @requires_token
-    def sample_events(self, project_id: str) -> pd.DataFrame:
+    def sample_events(self, project_id: str) -> DataFrame:
         """
         Retrieves a project's Benthic Photo Quadrat observations aggregated by sample events.
 
@@ -50,7 +50,7 @@ class BenthicPhotoQuadrat(MermaidBase):
             Benthic Photo Quadrat sample events.
 
         Returns:
-            pd.DataFrame
+            DataFrame
         """
         url = f"/projects/{project_id}/benthicpqts/sampleevents/"
         return self.data_frame_from_url(url)

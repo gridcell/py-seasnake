@@ -1,20 +1,22 @@
 [tool.poetry]
-name = "mermaid"
+name = "py-seasnake"
+packages = [
+    { include = "seasnake" },
+]
 version = "0.1.0"
-description = "A Python wrapper for accessing and managing MERMAID data with ease."
+description = "A Python wrapper for accessing and managing MERMAID (Marine Ecological Research Management Aid) data with ease."
 authors = ["Dustin Sampson <gridcell@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://gridcell.github.io/py-mermaid/"
-repository = "https://github.com/gridcell/py-mermaid"
-documentation = "https://gridcell.github.io/py-mermaid/"
-keywords = ["MERMAID", "coral", "fish"]
+homepage = "https://gridcell.github.io/py-seasnake/"
+repository = "https://github.com/gridcell/py-seasnake"
+documentation = "https://gridcell.github.io/py-seasnake/"
+keywords = ["MERMAID", "coral", "fish", "API"]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.12"
 pandas = "^2.0.0"
 PyJWT = "^2.6.0"
-textual = "^0.19.1"
 mkdocs-material = "^9.1.6"
 mkdocstrings = {extras = ["python"], version = "^0.21.2"}
 
@@ -30,7 +32,7 @@ mkdocs = "^1.4.2"
 pytest-ruff = "^0.0.5"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=1.2.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.mypy]

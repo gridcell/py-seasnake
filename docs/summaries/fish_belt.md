@@ -1,3 +1,3 @@
 # Fish Belt Transect
 
-::: mermaid.summaries.FishBeltTransect
+::: seasnake.summaries.FishBeltTransect
