@@ -3,7 +3,7 @@ name = "py-seasnake"
 packages = [
     { include = "seasnake" },
 ]
-version = "0.2.0"
+version = "0.2.1"
 description = "A Python wrapper for accessing and managing MERMAID (Marine Ecological Research Management Aid) data with ease."
 authors = ["Dustin Sampson <gridcell@gmail.com>"]
 license = "MIT"

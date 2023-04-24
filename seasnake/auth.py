@@ -35,7 +35,7 @@ class MermaidAuth:
 
     def _token_expired(self, token: Optional[str]) -> bool:
         if not token:
-            return False
+            return True
 
         try:
             payload = jwt.decode(token, options={"verify_signature": False})
