@@ -1,3 +1,3 @@
-# Benthic LIT
+# BenthicLIT
 
 ::: seasnake.summaries.BenthicLIT

@@ -1,3 +1,3 @@
-# Benthic PIT
+# BenthicPIT
 
 ::: seasnake.summaries.BenthicPIT

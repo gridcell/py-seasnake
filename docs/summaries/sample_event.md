@@ -1,3 +1,3 @@
-# Sample Event
+# SampleEvent
 
 ::: seasnake.summaries.SampleEvent

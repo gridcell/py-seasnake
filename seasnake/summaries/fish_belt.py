@@ -13,7 +13,18 @@ class FishBeltTransect(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, FishBeltTransect    
+        
+        auth = MermaidAuth()
+        fish_belt = FishBeltTransect(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(fish_belt.observations(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/beltfishes/obstransectbeltfishes/"
         return self.data_frame_from_url(url)
 
@@ -28,7 +39,18 @@ class FishBeltTransect(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, FishBeltTransect    
+        
+        auth = MermaidAuth()
+        fish_belt = FishBeltTransect(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(fish_belt.sample_units(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/beltfishes/sampleunits/"
         return self.data_frame_from_url(url)
 
@@ -43,6 +65,17 @@ class FishBeltTransect(MermaidBase):
 
         Returns:
             DataFrame
+
+        Examples:
+        ```
+        from seasnake import MermaidAuth, FishBeltTransect    
+        
+        auth = MermaidAuth()
+        fish_belt = FishBeltTransect(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(fish_belt.sample_events(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/beltfishes/sampleevents/"
         return self.data_frame_from_url(url)

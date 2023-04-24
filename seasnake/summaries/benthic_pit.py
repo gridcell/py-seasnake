@@ -20,6 +20,16 @@ class BenthicPIT(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, BenthicPIT    
+        
+        auth = MermaidAuth()
+        benthic_pit = BenthicPIT(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(benthic_pit.sample_events(project_id))
+        ```
         """
         url = f"/projects/{project_id}/benthicpits/obstransectbenthicpits/"
         return self.data_frame_from_url(url)
@@ -34,7 +44,17 @@ class BenthicPIT(MermaidBase):
 
         Returns:
             DataFrame
+        Examples:
+        ```
+        from seasnake import MermaidAuth, BenthicPIT    
+        
+        auth = MermaidAuth()
+        benthic_pit = BenthicPIT(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(benthic_pit.sample_events(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/benthicpits/sampleunits/"
         return self.data_frame_from_url(url)
 
@@ -48,6 +68,17 @@ class BenthicPIT(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, BenthicPIT    
+        
+        auth = MermaidAuth()
+        benthic_pit = BenthicPIT(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(benthic_pit.sample_events(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/benthicpits/sampleevents/"
         return self.data_frame_from_url(url)

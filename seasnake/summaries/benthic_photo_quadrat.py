@@ -21,7 +21,18 @@ class BenthicPhotoQuadrat(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, BenthicPhotoQuadrat    
+        
+        auth = MermaidAuth()
+        bpq = BenthicPhotoQuadrat(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(bpq.observations(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/benthicpqts/obstransectbenthicpqts/"
         return self.data_frame_from_url(url)
 
@@ -36,7 +47,18 @@ class BenthicPhotoQuadrat(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, BenthicPhotoQuadrat    
+        
+        auth = MermaidAuth()
+        bpq = BenthicPhotoQuadrat(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(bpq.sample_units(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/benthicpqts/sampleunits/"
         return self.data_frame_from_url(url)
 
@@ -51,6 +73,17 @@ class BenthicPhotoQuadrat(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, BenthicPhotoQuadrat    
+        
+        auth = MermaidAuth()
+        bpq = BenthicPhotoQuadrat(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(bpq.sample_events(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/benthicpqts/sampleevents/"
         return self.data_frame_from_url(url)

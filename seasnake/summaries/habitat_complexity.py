@@ -21,7 +21,18 @@ class HabitatComplexity(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, HabitatComplexity    
+        
+        auth = MermaidAuth()
+        hc = HabitatComplexity(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(hc.observations(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/habitatcomplexities/obshabitatcomplexities/"
         return self.data_frame_from_url(url)
 
@@ -36,7 +47,18 @@ class HabitatComplexity(MermaidBase):
 
         Returns:
             DataFrame
+
+        Examples:
+        ```
+        from seasnake import MermaidAuth, HabitatComplexity    
+        
+        auth = MermaidAuth()
+        hc = HabitatComplexity(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(hc.sample_units(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/habitatcomplexities/sampleunits/"
         return self.data_frame_from_url(url)
 
@@ -51,6 +73,17 @@ class HabitatComplexity(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, HabitatComplexity    
+        
+        auth = MermaidAuth()
+        hc = HabitatComplexity(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(hc.sample_events(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/habitatcomplexities/sampleevents/"
         return self.data_frame_from_url(url)

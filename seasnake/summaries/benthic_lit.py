@@ -20,7 +20,18 @@ class BenthicLIT(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, BenthicLIT    
+        
+        auth = MermaidAuth()
+        benthic_lit = BenthicLIT(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(benthic_lit.observations(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/benthiclits/obstransectbenthiclits/"
         return self.data_frame_from_url(url)
 
@@ -34,6 +45,16 @@ class BenthicLIT(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, BenthicLIT    
+        
+        auth = MermaidAuth()
+        benthic_lit = BenthicLIT(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(benthic_lit.sample_units(project_id))
+        ```
         """
 
         url = f"/projects/{project_id}/benthiclits/sampleunits/"
@@ -49,6 +70,17 @@ class BenthicLIT(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, BenthicLIT    
+        
+        auth = MermaidAuth()
+        benthic_lit = BenthicLIT(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(benthic_lit.sample_events(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/benthiclits/sampleevents/"
         return self.data_frame_from_url(url)

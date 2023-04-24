@@ -1,3 +1,3 @@
-# Fish Belt Transect
+# FishBeltTransect
 
 ::: seasnake.summaries.FishBeltTransect

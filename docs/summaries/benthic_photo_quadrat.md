@@ -1,3 +1,3 @@
-# Benthic Photo Quadrat
+# BenthicPhotoQuadrat
 
 ::: seasnake.summaries.BenthicPhotoQuadrat

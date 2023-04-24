@@ -20,7 +20,18 @@ class Bleaching(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, Bleaching    
+        
+        auth = MermaidAuth()
+        bleaching = Bleaching(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(bleaching.colonies_bleached_observations(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/bleachingqcs/obscoloniesbleacheds/"
         return self.data_frame_from_url(url)
 
@@ -35,7 +46,18 @@ class Bleaching(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, Bleaching    
+        
+        auth = MermaidAuth()
+        bleaching = Bleaching(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(bleaching.percent_cover_observations(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/bleachingqcs/obsquadratbenthicpercents/"
         return self.data_frame_from_url(url)
 
@@ -49,7 +71,18 @@ class Bleaching(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, Bleaching    
+        
+        auth = MermaidAuth()
+        bleaching = Bleaching(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(bleaching.sample_units(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/bleachingqcs/sampleunits/"
         return self.data_frame_from_url(url)
 
@@ -63,6 +96,17 @@ class Bleaching(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, Bleaching    
+        
+        auth = MermaidAuth()
+        bleaching = Bleaching(token=auth.get_token())
+        project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
+        print(bleaching.sample_events(project_id))
+        ```
         """
+
         url = f"/projects/{project_id}/bleachingqcs/sampleevents/"
         return self.data_frame_from_url(url)

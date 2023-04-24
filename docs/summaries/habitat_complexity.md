@@ -1,3 +1,3 @@
-# Habitat Complexity
+# HabitatComplexity
 
 ::: seasnake.summaries.HabitatComplexity

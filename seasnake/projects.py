@@ -24,7 +24,17 @@ class Project(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import MermaidAuth, Project    
+        
+        auth = MermaidAuth()
+        project = Project(token=auth.get_token())
+        print(project.my_projects())
+        ```
         """
+
         url = "/projects/"
         return self.data_frame_from_url(url)
 
@@ -50,6 +60,14 @@ class Project(MermaidBase):
 
         Returns:
             DataFrame
+        
+        Examples:
+        ```
+        from seasnake import Project    
+        
+        project = Project()
+        print(project.search_projects(tags=["WCS Fiji""]))
+        ```
         """
 
         url = "/projects/"
