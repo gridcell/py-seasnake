@@ -3,7 +3,7 @@ name = "py-seasnake"
 packages = [
     { include = "seasnake" },
 ]
-version = "0.1.0"
+version = "0.2.0"
 description = "A Python wrapper for accessing and managing MERMAID (Marine Ecological Research Management Aid) data with ease."
 authors = ["Dustin Sampson <gridcell@gmail.com>"]
 license = "MIT"
@@ -19,6 +19,7 @@ pandas = "^2.0.0"
 PyJWT = "^2.6.0"
 mkdocs-material = "^9.1.6"
 mkdocstrings = {extras = ["python"], version = "^0.21.2"}
+requests = "^2.28.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.2"
@@ -30,6 +31,10 @@ pytest-mypy = "^0.10.3"
 pandas-stubs = "^1.5.3"
 mkdocs = "^1.4.2"
 pytest-ruff = "^0.0.5"
+types-requests = "^2.28.11.17"
+
+[tool.poetry.group.examples.dependencies]
+jupyterlab = "^3.6.3"
 
 [build-system]
 requires = ["poetry-core>=1.2.0"]

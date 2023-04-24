@@ -1,21 +1,13 @@
-import json
-import os
-import urllib.request
 from typing import Any, Dict, Generator, List, Optional, Tuple, Union
 
+import requests
 import pandas as pd
 from pandas import DataFrame
 
 PROJECT_STATUS_OPEN = 90
 PROJECT_STATUS_TEST = 80
 PROJECT_STATUS_LOCKED = 10
-
-if str(os.environ.get("ENV")).lower() == "local":
-    MERMAID_API_URL = "http://localhost:8080/v1"
-elif str(os.environ.get("ENV")).lower() == "dev":
-    MERMAID_API_URL = "https://dev-api.datamermaid.org/v1"
-else:
-    MERMAID_API_URL = "https://api.datamermaid.org/v1"
+MERMAID_API_URL = "https://api.datamermaid.org/v1"
 
 
 def requires_token(func):
@@ -35,9 +27,10 @@ class MermaidBase:
         self,
         url: str,
         payload: Optional[Dict[str, Any]] = None,
+        params: Optional[Dict[str, Any]] = None,
         headers: Optional[Dict[str, str]] = None,
         method: str = "GET",
-    ):
+    ) -> Dict[str, Any]:
         _headers = {"Content-Type": "application/json", "User-Agent": "python"}
         _headers |= headers or {}
         payload = payload or {}
@@ -45,14 +38,24 @@ class MermaidBase:
         if not url.startswith("http"):
             url = f"{MERMAID_API_URL}{url}"
 
-        req = urllib.request.Request(
+        method = method.upper()
+        if method == "GET":
+            request_method = requests.get  # type: ignore
+        elif method == "POST":
+            request_method = requests.post  # type: ignore
+        else:
+            raise requests.RequestException(f"Unsupported method: {method}")
+
+        resp = request_method(
             url,
-            data=json.dumps(payload).encode("utf-8"),
-            method=method,
+            data=payload,
+            params=params,
             headers=_headers,
         )
-        with urllib.request.urlopen(req) as response:
-            return json.loads(response.read())
+        if resp.status_code != 200:
+            raise Exception(f"Error fetching data: {resp.text}")
+
+        return resp.json()
 
     def fetch_list(
         self,
@@ -63,9 +66,11 @@ class MermaidBase:
         method: str = "GET",
     ) -> Generator[Dict[str, Any], None, None]:
         query_params = query_params or {}
-        url = f"{url}?{'&'.join(f'{k}={v}' for k, v in query_params.items())}"
         while True:
-            result = self.fetch(url, payload, headers=headers, method=method)
+            result = self.fetch(
+                url, payload, params=query_params, headers=headers, method=method
+            )
+
             yield from result.get("results") or []
             if result["next"] is None:
                 break
@@ -91,7 +96,7 @@ class MermaidBase:
         if requires_auth and "Authorization" not in headers:
             headers["Authorization"] = f"Bearer {self.token}"
 
-        df = DataFrame(
+        data = list(
             self.fetch_list(
                 url,
                 query_params=query_params,
@@ -100,6 +105,10 @@ class MermaidBase:
                 method=method,
             )
         )
+        if not data:
+            return DataFrame()
+
+        df = DataFrame(data)
 
         if rename_columns:
             df = df.rename(columns=rename_columns)

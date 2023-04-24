@@ -12,13 +12,13 @@ SeaSnake is a user-friendly Python wrapper that enables seamless interaction wit
 ```
 from seasnake import auth
 from seasnake.auth import MermaidAuth
-from seasnake.summaries import FishBelt
+from seasnake.summaries import FishBeltTransect
 
 auth = MermaidAuth()
 token = auth.request_token()
 
 project_id = "<YOUR PROJECT ID>"
-fb = FishBelt(token=token)
+fb = FishBeltTransect(token=token)
 df_obs = fb.observations(project_id)
 
 print(df_obs)
