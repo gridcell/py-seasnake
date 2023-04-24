@@ -18,9 +18,9 @@ class SampleEvent(MermaidBase):
 
         Args:
             limit_columns (bool, optional): Whether to limit the columns included
-            in the DataFrame. Defaults to True.
+                in the DataFrame. Defaults to True.
             flatten (bool, optional): Whether to flatten the 'protocols' column in
-            the DataFrame. Defaults to True.
+                the DataFrame. Defaults to True.
 
         Returns:
             DataFrame

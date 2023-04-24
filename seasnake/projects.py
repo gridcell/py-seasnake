@@ -50,13 +50,13 @@ class Project(MermaidBase):
 
         Args:
             name (Optional[str], optional): A name or list of names to search for in
-            projects. Defaults to None.
+                projects. Defaults to None.
             countries (Union[None, str, List[str]], optional): A country to search for
-            in projects. Defaults to None.
+                in projects. Defaults to None.
             tags (Union[None, str, List[str]], optional): A tag or list of tags to search
-            for in projects. Defaults to None.
+                for in projects. Defaults to None.
             include_test_projects (bool, optional): Whether to include test projects in
-            the search results. Defaults to False.
+                the search results. Defaults to False.
 
         Returns:
             DataFrame
