@@ -9,7 +9,7 @@ class FishBeltTransect(MermaidBase):
 
         Args:
             project_id (str): The ID of the project for which to fetch
-            Fish Belt Transect observations.
+                Fish Belt Transect observations.
 
         Returns:
             DataFrame
@@ -35,7 +35,7 @@ class FishBeltTransect(MermaidBase):
 
         Args:
             project_id (str): The ID of the project for which to fetch
-            Fish Belt Transect sample units.
+                Fish Belt Transect sample units.
 
         Returns:
             DataFrame
@@ -61,7 +61,7 @@ class FishBeltTransect(MermaidBase):
 
         Args:
             project_id (str): The ID of the project for which to fetch
-            Fish Belt Transect sample events.
+                Fish Belt Transect sample events.
 
         Returns:
             DataFrame

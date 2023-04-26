@@ -17,7 +17,7 @@ class HabitatComplexity(MermaidBase):
 
         Args:
             project_id (str): The ID of the project for which to fetch
-            habitat complexity observations.
+                habitat complexity observations.
 
         Returns:
             DataFrame
@@ -43,7 +43,7 @@ class HabitatComplexity(MermaidBase):
 
         Args:
             project_id (str): The ID of the project for which to fetch
-            habitat complexity sample units.
+                habitat complexity sample units.
 
         Returns:
             DataFrame
@@ -69,7 +69,7 @@ class HabitatComplexity(MermaidBase):
 
         Args:
             project_id (str): The ID of the project for which to fetch
-            habitat complexity sample events.
+                habitat complexity sample events.
 
         Returns:
             DataFrame

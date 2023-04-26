@@ -17,7 +17,7 @@ class BenthicPhotoQuadrat(MermaidBase):
 
         Args:
             project_id (str): The ID of the project for which to fetch
-            Benthic Photo Quadrat observations.
+                Benthic Photo Quadrat observations.
 
         Returns:
             DataFrame
@@ -43,7 +43,7 @@ class BenthicPhotoQuadrat(MermaidBase):
 
         Args:
             project_id (str): The ID of the project for which to fetch
-            Benthic Photo Quadrat sample units.
+                Benthic Photo Quadrat sample units.
 
         Returns:
             DataFrame
@@ -69,7 +69,7 @@ class BenthicPhotoQuadrat(MermaidBase):
 
         Args:
             project_id (str): The ID of the project for which to fetch
-            Benthic Photo Quadrat sample events.
+                Benthic Photo Quadrat sample events.
 
         Returns:
             DataFrame

@@ -71,3 +71,4 @@ nav:
       - Fish Belt: summaries/fish_belt.md
       - Habitat Complexity: summaries/habitat_complexity.md
       - Sample Event: summaries/sample_event.md
+    - Renderers: renderers.md
