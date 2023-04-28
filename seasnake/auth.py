@@ -1,11 +1,10 @@
 import datetime
+import time
 import webbrowser
 from typing import Optional
-import requests
-import time
 
 import jwt
-
+import requests
 
 AUTH0_DOMAIN = "datamermaid.auth0.com"
 RESPONSE_TYPE = "token"

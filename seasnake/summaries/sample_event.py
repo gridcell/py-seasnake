@@ -24,10 +24,10 @@ class SampleEvent(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import SampleEvent    
+        from seasnake import SampleEvent
 
         sample_event = SampleEvent()
         print(sample_event.summary())

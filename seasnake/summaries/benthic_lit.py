@@ -20,11 +20,11 @@ class BenthicLIT(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, BenthicLIT    
-        
+        from seasnake import MermaidAuth, BenthicLIT
+
         auth = MermaidAuth()
         benthic_lit = BenthicLIT(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -45,11 +45,11 @@ class BenthicLIT(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, BenthicLIT    
-        
+        from seasnake import MermaidAuth, BenthicLIT
+
         auth = MermaidAuth()
         benthic_lit = BenthicLIT(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -70,11 +70,11 @@ class BenthicLIT(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, BenthicLIT    
-        
+        from seasnake import MermaidAuth, BenthicLIT
+
         auth = MermaidAuth()
         benthic_lit = BenthicLIT(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"

@@ -20,11 +20,11 @@ class Bleaching(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, Bleaching    
-        
+        from seasnake import MermaidAuth, Bleaching
+
         auth = MermaidAuth()
         bleaching = Bleaching(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -46,11 +46,11 @@ class Bleaching(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, Bleaching    
-        
+        from seasnake import MermaidAuth, Bleaching
+
         auth = MermaidAuth()
         bleaching = Bleaching(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -71,11 +71,11 @@ class Bleaching(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, Bleaching    
-        
+        from seasnake import MermaidAuth, Bleaching
+
         auth = MermaidAuth()
         bleaching = Bleaching(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -96,11 +96,11 @@ class Bleaching(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, Bleaching    
-        
+        from seasnake import MermaidAuth, Bleaching
+
         auth = MermaidAuth()
         bleaching = Bleaching(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"

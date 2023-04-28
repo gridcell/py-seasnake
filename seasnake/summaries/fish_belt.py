@@ -13,11 +13,11 @@ class FishBeltTransect(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, FishBeltTransect    
-        
+        from seasnake import MermaidAuth, FishBeltTransect
+
         auth = MermaidAuth()
         fish_belt = FishBeltTransect(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -39,11 +39,11 @@ class FishBeltTransect(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, FishBeltTransect    
-        
+        from seasnake import MermaidAuth, FishBeltTransect
+
         auth = MermaidAuth()
         fish_belt = FishBeltTransect(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -68,8 +68,8 @@ class FishBeltTransect(MermaidBase):
 
         Examples:
         ```
-        from seasnake import MermaidAuth, FishBeltTransect    
-        
+        from seasnake import MermaidAuth, FishBeltTransect
+
         auth = MermaidAuth()
         fish_belt = FishBeltTransect(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"

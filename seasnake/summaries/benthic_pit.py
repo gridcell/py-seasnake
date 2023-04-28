@@ -20,11 +20,11 @@ class BenthicPIT(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, BenthicPIT    
-        
+        from seasnake import MermaidAuth, BenthicPIT
+
         auth = MermaidAuth()
         benthic_pit = BenthicPIT(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -46,8 +46,8 @@ class BenthicPIT(MermaidBase):
             DataFrame
         Examples:
         ```
-        from seasnake import MermaidAuth, BenthicPIT    
-        
+        from seasnake import MermaidAuth, BenthicPIT
+
         auth = MermaidAuth()
         benthic_pit = BenthicPIT(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -68,11 +68,11 @@ class BenthicPIT(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, BenthicPIT    
-        
+        from seasnake import MermaidAuth, BenthicPIT
+
         auth = MermaidAuth()
         benthic_pit = BenthicPIT(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
