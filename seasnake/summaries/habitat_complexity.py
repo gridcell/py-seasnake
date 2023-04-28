@@ -21,11 +21,11 @@ class HabitatComplexity(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, HabitatComplexity    
-        
+        from seasnake import MermaidAuth, HabitatComplexity
+
         auth = MermaidAuth()
         hc = HabitatComplexity(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -50,8 +50,8 @@ class HabitatComplexity(MermaidBase):
 
         Examples:
         ```
-        from seasnake import MermaidAuth, HabitatComplexity    
-        
+        from seasnake import MermaidAuth, HabitatComplexity
+
         auth = MermaidAuth()
         hc = HabitatComplexity(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -73,11 +73,11 @@ class HabitatComplexity(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, HabitatComplexity    
-        
+        from seasnake import MermaidAuth, HabitatComplexity
+
         auth = MermaidAuth()
         hc = HabitatComplexity(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"

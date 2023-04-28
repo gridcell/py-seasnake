@@ -21,11 +21,11 @@ class BenthicPhotoQuadrat(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, BenthicPhotoQuadrat    
-        
+        from seasnake import MermaidAuth, BenthicPhotoQuadrat
+
         auth = MermaidAuth()
         bpq = BenthicPhotoQuadrat(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -47,11 +47,11 @@ class BenthicPhotoQuadrat(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, BenthicPhotoQuadrat    
-        
+        from seasnake import MermaidAuth, BenthicPhotoQuadrat
+
         auth = MermaidAuth()
         bpq = BenthicPhotoQuadrat(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -73,11 +73,11 @@ class BenthicPhotoQuadrat(MermaidBase):
 
         Returns:
             DataFrame
-        
+
         Examples:
         ```
-        from seasnake import MermaidAuth, BenthicPhotoQuadrat    
-        
+        from seasnake import MermaidAuth, BenthicPhotoQuadrat
+
         auth = MermaidAuth()
         bpq = BenthicPhotoQuadrat(token=auth.get_token())
         project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"

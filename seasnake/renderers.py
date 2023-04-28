@@ -4,7 +4,9 @@ from typing import Optional
 from pandas import DataFrame
 
 
-def to_geojson(df: DataFrame, x_key: str = "longitude", y_key: str = "latitude") -> Optional[str]:
+def to_geojson(
+    df: DataFrame, x_key: str = "longitude", y_key: str = "latitude"
+) -> Optional[str]:
     """Converts a DataFrame to GeoJSON.
 
     Args:
@@ -16,11 +18,11 @@ def to_geojson(df: DataFrame, x_key: str = "longitude", y_key: str = "latitude")
 
     Returns:
         Optional[str]: The GeoJSON representation of the DataFrame.
-    
+
     Examples:
     ```
-    from seasnake import MermaidAuth, FishBeltTransect, to_geojson  
-    
+    from seasnake import MermaidAuth, FishBeltTransect, to_geojson
+
     auth = MermaidAuth()
     fish_belt = FishBeltTransect(token=auth.get_token())
     project_id = "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE"
@@ -39,20 +41,10 @@ def to_geojson(df: DataFrame, x_key: str = "longitude", y_key: str = "latitude")
     features = []
     for _, row in df.iterrows():
         properties = {col: row[col] for col in df.columns}
-        geometry = {
-            "type": "Point",
-            "coordinates": [row[x_key], row[y_key]]
-        }
-        feature = {
-            "type": "Feature",
-            "properties": properties,
-            "geometry": geometry
-        }
+        geometry = {"type": "Point", "coordinates": [row[x_key], row[y_key]]}
+        feature = {"type": "Feature", "properties": properties, "geometry": geometry}
         features.append(feature)
-    
-    geojson = {
-        "type": "FeatureCollection",
-        "features": features
-    }
+
+    geojson = {"type": "FeatureCollection", "features": features}
 
     return json.dumps(geojson, ensure_ascii=False)
