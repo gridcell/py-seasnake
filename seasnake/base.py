@@ -1,13 +1,21 @@
-from typing import Any, Dict, Generator, List, Optional, Tuple, Union
+import math
+import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Any, Dict, List, Optional, Tuple, Union
 
-import requests
 import pandas as pd
+import requests
 from pandas import DataFrame
+from requests.adapters import HTTPAdapter, Retry
+
 
 PROJECT_STATUS_OPEN = 90
 PROJECT_STATUS_TEST = 80
 PROJECT_STATUS_LOCKED = 10
 MERMAID_API_URL = "https://api.datamermaid.org/v1"
+MAX_THREADS = 6
+MAX_RETRIES = 5
+Retry.DEFAULT_BACKOFF_MAX = 30
 
 
 def requires_token(func):
@@ -20,6 +28,8 @@ def requires_token(func):
 
 
 class MermaidBase:
+    REQUEST_LIMIT = 1000
+
     def __init__(self, token: Optional[str] = None):
         self.token = token
 
@@ -38,24 +48,30 @@ class MermaidBase:
         if not url.startswith("http"):
             url = f"{MERMAID_API_URL}{url}"
 
-        method = method.upper()
-        if method == "GET":
-            request_method = requests.get  # type: ignore
-        elif method == "POST":
-            request_method = requests.post  # type: ignore
-        else:
-            raise requests.RequestException(f"Unsupported method: {method}")
+        with requests.Session() as session:
+            retries = Retry(
+                total=MAX_RETRIES, backoff_factor=1, status_forcelist=[502, 503, 504]
+            )
 
-        resp = request_method(
-            url,
-            data=payload,
-            params=params,
-            headers=_headers,
-        )
-        if resp.status_code != 200:
-            raise Exception(f"Error fetching data: {resp.text}")
+            session.mount("https://", HTTPAdapter(max_retries=retries))
+            method = method.upper()
+            if method == "GET":
+                request_method = session.get  # type: ignore
+            elif method == "POST":
+                request_method = session.post  # type: ignore
+            else:
+                raise requests.RequestException(f"Unsupported method: {method}")
 
-        return resp.json()
+            resp = request_method(
+                url,
+                data=payload,
+                params=params,
+                headers=_headers,
+            )
+            if resp.status_code != 200:
+                raise Exception(f"Error fetching data: {resp.text}")
+
+            return resp.json()
 
     def fetch_list(
         self,
@@ -64,17 +80,47 @@ class MermaidBase:
         payload: Optional[Dict[str, Any]] = None,
         headers: Optional[Dict[str, str]] = None,
         method: str = "GET",
-    ) -> Generator[Dict[str, Any], None, None]:
+        num_threads: Optional[int] = None,
+    ):
         query_params = query_params or {}
-        while True:
-            result = self.fetch(
-                url, payload, params=query_params, headers=headers, method=method
+        result = self.fetch(
+            url, payload, params=query_params, headers=headers, method=method
+        )
+        total_records = result.get("count") or 0
+        num_calls = math.ceil(total_records / self.REQUEST_LIMIT) - 1
+        yield from result.get("results") or []
+
+        if num_threads is None:
+            cpu_count = os.cpu_count() or 1
+            num_threads = min(
+                (1 if cpu_count <= 1 else cpu_count - 1) * 2, MAX_THREADS
             )
 
-            yield from result.get("results") or []
-            if result["next"] is None:
-                break
-            url = result["next"]
+        if num_calls >= 5 and num_threads > 1:
+            with ThreadPoolExecutor(max_workers=num_threads) as executor:
+                futures = []
+                for n in range(num_calls):
+                    query_params["page"] = n + 2
+                    futures.append(
+                        executor.submit(
+                            self.fetch,
+                            url,
+                            payload,
+                            params=query_params,
+                            headers=headers,
+                            method=method,
+                        )
+                    )
+
+                for future in as_completed(futures):
+                    yield from future.result().get("results") or []
+        else:
+            for n in range(num_calls):
+                query_params["page"] = n + 2
+                result = self.fetch(
+                    url, payload, params=query_params, headers=headers, method=method
+                )
+                yield from result.get("results") or []
 
     def data_frame_from_url(
         self,
