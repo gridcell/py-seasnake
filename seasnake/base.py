@@ -8,7 +8,6 @@ import requests
 from pandas import DataFrame
 from requests.adapters import HTTPAdapter, Retry
 
-
 PROJECT_STATUS_OPEN = 90
 PROJECT_STATUS_TEST = 80
 PROJECT_STATUS_LOCKED = 10
@@ -56,6 +55,19 @@ class MermaidBase:
     def __init__(self, token: Optional[str] = None):
         self.token = token
 
+    def get_full_url(self, url: str) -> str:
+        """
+        Returns full URL for the given path.
+
+        Args:
+            url (str): The URL path.
+
+        Returns:
+            str
+        """
+
+        return url if url.startswith("http") else f"{MERMAID_API_URL}{url}"
+
     def fetch(
         self,
         url: str,
@@ -88,9 +100,7 @@ class MermaidBase:
         _headers = {"Content-Type": "application/json", "User-Agent": "python"}
         _headers |= headers or {}
         payload = payload or {}
-
-        if not url.startswith("http"):
-            url = f"{MERMAID_API_URL}{url}"
+        url = self.get_full_url(url)
 
         with requests.Session() as session:
             retries = Retry(
@@ -158,9 +168,7 @@ class MermaidBase:
 
         if num_threads is None:
             cpu_count = os.cpu_count() or 1
-            num_threads = min(
-                (1 if cpu_count <= 1 else cpu_count - 1) * 2, MAX_THREADS
-            )
+            num_threads = min((1 if cpu_count <= 1 else cpu_count - 1) * 2, MAX_THREADS)
 
         if num_calls >= 5 and num_threads > 1:
             with ThreadPoolExecutor(max_workers=num_threads) as executor:
@@ -199,7 +207,7 @@ class MermaidBase:
         rename_columns: Optional[Dict[str, str]] = None,
         requires_auth: bool = True,
     ) -> DataFrame:
-        """ Returns a pandas DataFrame from the data retrieved from a Mermaid API endpoint.
+        """Returns a pandas DataFrame from the data retrieved from a Mermaid API endpoint.
 
         Args:
             url (str): The URL for the API endpoint.

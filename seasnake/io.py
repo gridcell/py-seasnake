@@ -1,7 +1,20 @@
-import json
 from typing import Optional
 
+import geopandas
+from geopandas import GeoDataFrame
 from pandas import DataFrame
+
+
+def _to_geodataframe(
+    df: DataFrame, x_key: str = "longitude", y_key: str = "latitude"
+) -> GeoDataFrame:
+    if df.empty:
+        return None
+
+    if x_key not in df.columns or y_key not in df.columns:
+        raise ValueError(f"DataFrame must contain columns '{x_key}' and '{y_key}'.")
+
+    return GeoDataFrame(df, geometry=geopandas.points_from_xy(df[x_key], df[y_key]))
 
 
 def to_geojson(
@@ -32,19 +45,5 @@ def to_geojson(
 
     """
 
-    if df.empty:
-        return None
-
-    if x_key not in df.columns or y_key not in df.columns:
-        raise ValueError(f"DataFrame must contain columns '{x_key}' and '{y_key}'.")
-
-    features = []
-    for _, row in df.iterrows():
-        properties = {col: row[col] for col in df.columns}
-        geometry = {"type": "Point", "coordinates": [row[x_key], row[y_key]]}
-        feature = {"type": "Feature", "properties": properties, "geometry": geometry}
-        features.append(feature)
-
-    geojson = {"type": "FeatureCollection", "features": features}
-
-    return json.dumps(geojson, ensure_ascii=False)
+    gdf = _to_geodataframe(df, x_key, y_key)
+    return None if gdf is None else gdf.to_json()

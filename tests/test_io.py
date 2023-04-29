@@ -2,7 +2,8 @@ import json
 
 import pytest
 
-from seasnake.renderers import to_geojson
+from seasnake.io import to_geojson
+
 
 def test_to_geojson(geo_dataframe):
     geojson_str = to_geojson(geo_dataframe)
@@ -14,4 +15,3 @@ def test_to_geojson(geo_dataframe):
 def test_to_geojson_empty(dataframe):
     with pytest.raises(ValueError):
         to_geojson(dataframe)
- 

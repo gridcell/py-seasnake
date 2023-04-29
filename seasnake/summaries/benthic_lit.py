@@ -1,7 +1,7 @@
-from ..base import DataFrame, MermaidBase, requires_token
+from .base import BaseSummary, DataFrame, requires_token
 
 
-class BenthicLIT(MermaidBase):
+class BenthicLIT(BaseSummary):
     """
     A class for handling Benthic Line Intercept Transect (LIT) data from MERMAID.
 
@@ -33,7 +33,8 @@ class BenthicLIT(MermaidBase):
         """
 
         url = f"/projects/{project_id}/benthiclits/obstransectbenthiclits/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df
 
     @requires_token
     def sample_units(self, project_id: str) -> DataFrame:
@@ -58,7 +59,8 @@ class BenthicLIT(MermaidBase):
         """
 
         url = f"/projects/{project_id}/benthiclits/sampleunits/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df
 
     @requires_token
     def sample_events(self, project_id: str) -> DataFrame:
@@ -83,4 +85,5 @@ class BenthicLIT(MermaidBase):
         """
 
         url = f"/projects/{project_id}/benthiclits/sampleevents/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df

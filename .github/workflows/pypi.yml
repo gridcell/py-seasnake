@@ -23,6 +23,6 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install poetry
       - run: poetry install
-      - run: pytest
+      - run: poetry run pytest
       - if: ${{ job.status == 'success' }}
-        run: poetry publish -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }}
+        run: poetry publish --build -u ${{ secrets.PYPI_USERNAME }} --password="${{ secrets.PYPI_PASSWORD }}"

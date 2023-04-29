@@ -1,7 +1,7 @@
-from ..base import DataFrame, MermaidBase, requires_token
+from .base import BaseSummary, DataFrame, requires_token
 
 
-class Bleaching(MermaidBase):
+class Bleaching(BaseSummary):
     """
     A class for handling coral bleaching data from MERMAID.
 
@@ -33,7 +33,8 @@ class Bleaching(MermaidBase):
         """
 
         url = f"/projects/{project_id}/bleachingqcs/obscoloniesbleacheds/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df
 
     @requires_token
     def percent_cover_observations(self, project_id: str) -> DataFrame:
@@ -59,7 +60,8 @@ class Bleaching(MermaidBase):
         """
 
         url = f"/projects/{project_id}/bleachingqcs/obsquadratbenthicpercents/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df
 
     @requires_token
     def sample_units(self, project_id: str) -> DataFrame:
@@ -84,7 +86,8 @@ class Bleaching(MermaidBase):
         """
 
         url = f"/projects/{project_id}/bleachingqcs/sampleunits/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df
 
     @requires_token
     def sample_events(self, project_id: str) -> DataFrame:
@@ -109,4 +112,5 @@ class Bleaching(MermaidBase):
         """
 
         url = f"/projects/{project_id}/bleachingqcs/sampleevents/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df
