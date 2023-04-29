@@ -1,7 +1,7 @@
-from ..base import DataFrame, MermaidBase, requires_token
+from .base import BaseSummary, DataFrame, requires_token
 
 
-class BenthicPhotoQuadrat(MermaidBase):
+class BenthicPhotoQuadrat(BaseSummary):
     """
     A class for handling Benthic Photo Quadrat data from MERMAID.
 
@@ -34,7 +34,8 @@ class BenthicPhotoQuadrat(MermaidBase):
         """
 
         url = f"/projects/{project_id}/benthicpqts/obstransectbenthicpqts/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df
 
     @requires_token
     def sample_units(self, project_id: str) -> DataFrame:
@@ -60,7 +61,8 @@ class BenthicPhotoQuadrat(MermaidBase):
         """
 
         url = f"/projects/{project_id}/benthicpqts/sampleunits/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df
 
     @requires_token
     def sample_events(self, project_id: str) -> DataFrame:
@@ -86,4 +88,5 @@ class BenthicPhotoQuadrat(MermaidBase):
         """
 
         url = f"/projects/{project_id}/benthicpqts/sampleevents/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df

@@ -1,7 +1,7 @@
-from ..base import DataFrame, MermaidBase, requires_token
+from .base import BaseSummary, DataFrame, requires_token
 
 
-class BenthicPIT(MermaidBase):
+class BenthicPIT(BaseSummary):
     """
     A class for handling Benthic Point Intercept Transect (PIT) data from MERMAID.
 
@@ -32,7 +32,8 @@ class BenthicPIT(MermaidBase):
         ```
         """
         url = f"/projects/{project_id}/benthicpits/obstransectbenthicpits/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df
 
     @requires_token
     def sample_units(self, project_id: str) -> DataFrame:
@@ -56,7 +57,8 @@ class BenthicPIT(MermaidBase):
         """
 
         url = f"/projects/{project_id}/benthicpits/sampleunits/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df
 
     @requires_token
     def sample_events(self, project_id: str) -> DataFrame:
@@ -81,4 +83,5 @@ class BenthicPIT(MermaidBase):
         """
 
         url = f"/projects/{project_id}/benthicpits/sampleevents/"
-        return self.data_frame_from_url(url)
+        df = self.read_cache(url)
+        return self.to_cache(url, self.data_frame_from_url(url)) if df is None else df
