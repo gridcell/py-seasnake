@@ -15,11 +15,11 @@ keywords = ["MERMAID", "coral", "fish", "API"]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.12"
-pandas = "^2.0.0"
 PyJWT = "^2.6.0"
 mkdocs-material = "^9.1.6"
 mkdocstrings = {extras = ["python"], version = "^0.21.2"}
 requests = "^2.28.2"
+geopandas = "^0.12.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.2"

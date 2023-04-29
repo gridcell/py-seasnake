@@ -1,3 +1,0 @@
-# Renderers
-
-::: seasnake.renderers

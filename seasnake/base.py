@@ -158,9 +158,7 @@ class MermaidBase:
 
         if num_threads is None:
             cpu_count = os.cpu_count() or 1
-            num_threads = min(
-                (1 if cpu_count <= 1 else cpu_count - 1) * 2, MAX_THREADS
-            )
+            num_threads = min((1 if cpu_count <= 1 else cpu_count - 1) * 2, MAX_THREADS)
 
         if num_calls >= 5 and num_threads > 1:
             with ThreadPoolExecutor(max_workers=num_threads) as executor:
@@ -199,7 +197,7 @@ class MermaidBase:
         rename_columns: Optional[Dict[str, str]] = None,
         requires_auth: bool = True,
     ) -> DataFrame:
-        """ Returns a pandas DataFrame from the data retrieved from a Mermaid API endpoint.
+        """Returns a pandas DataFrame from the data retrieved from a Mermaid API endpoint.
 
         Args:
             url (str): The URL for the API endpoint.
