@@ -58,7 +58,15 @@ class MermaidAuth:
         except Exception:
             return None
 
-    def get_token(self) -> Optional[str]:
+    def get_token(self, store: bool=False) -> Optional[str]:
+        """
+
+        Args:
+            store (bool, optional): Store token to disk. Defaults to False.
+
+        Returns:
+            Optional[str]: Access token
+        """
         client_id = CLIENT_ID
         domain = AUTH0_DOMAIN
         audience = AUDIENCE
@@ -99,7 +107,8 @@ class MermaidAuth:
             if response.status_code == 200:
                 json_response = response.json()
                 access_token = json_response["access_token"]
-                self._write_token(access_token)
+                if store:
+                    self._write_token(access_token)
                 return access_token
 
             # If the timeout is reached, exit the loop and inform the user
