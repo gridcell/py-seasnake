@@ -1,4 +1,5 @@
 import datetime
+import keyring
 import time
 import webbrowser
 from typing import Optional
@@ -30,7 +31,8 @@ class MermaidAuth:
         token = mermaid_auth.get_token()
     """
 
-    auth_file = ".auth"
+    AUTH_CODE_URL = f"https://{AUTH0_DOMAIN}/oauth/device/code"
+    AUTH_TOKEN_URL = f"https://{AUTH0_DOMAIN}/oauth/token"
 
     def _token_expired(self, token: Optional[str]) -> bool:
         if not token:
@@ -48,27 +50,34 @@ class MermaidAuth:
             return True
 
     def _write_token(self, token: str):
-        with open(self.auth_file, "w") as f:
-            f.write(token)
+        try:
+            keyring.set_password("system", "seasnake", token)
+        except Exception:
+            pass
 
     def _load_token(self) -> Optional[str]:
         try:
-            with open(self.auth_file, "r") as f:
-                return f.read()
+            token = keyring.get_password("system", "seasnake")
+            return token
         except Exception:
             return None
 
+    def clear_token(self):
+        """
+        Delete stored Mermaid API access token.
+        """
+        keyring.delete_password("system", "seasnake")
+
     def get_token(self, store: bool=False) -> Optional[str]:
         """
-
+        Get an access token for the Mermaid API.
         Args:
-            store (bool, optional): Store token to disk. Defaults to False.
+            store (bool, optional): Store token to keyring service ([more info](https://github.com/jaraco/keyring)). Defaults to False.
 
         Returns:
             Optional[str]: Access token
         """
         client_id = CLIENT_ID
-        domain = AUTH0_DOMAIN
         audience = AUDIENCE
 
         token = self._load_token()
@@ -76,7 +85,7 @@ class MermaidAuth:
             return token
 
         response = requests.post(
-            f"https://{domain}/oauth/device/code",
+            self.AUTH_CODE_URL,
             data={"client_id": client_id, "audience": audience},
         )
 
@@ -95,7 +104,7 @@ class MermaidAuth:
 
             # Make a request to the token endpoint using the device code
             response = requests.post(
-                f"https://{domain}/oauth/token",
+                self.AUTH_TOKEN_URL,
                 data={
                     "grant_type": "urn:ietf:params:oauth:grant-type:device_code",
                     "client_id": client_id,
@@ -109,6 +118,8 @@ class MermaidAuth:
                 access_token = json_response["access_token"]
                 if store:
                     self._write_token(access_token)
+                else:
+                    self.clear_token()
                 return access_token
 
             # If the timeout is reached, exit the loop and inform the user
