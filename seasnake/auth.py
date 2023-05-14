@@ -22,9 +22,6 @@ class MermaidAuth:
     access tokens for use with the Mermaid API. It checks if the stored token is expired,
     and if so, initiates an authentication process to obtain a new token.
 
-    Attributes:
-        auth_file (str): The name of the file where the access token is stored.
-
     Example usage:
 
         mermaid_auth = MermaidAuth()
