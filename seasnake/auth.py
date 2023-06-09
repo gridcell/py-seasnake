@@ -22,6 +22,9 @@ class MermaidAuth:
     access tokens for use with the Mermaid API. It checks if the stored token is expired,
     and if so, initiates an authentication process to obtain a new token.
 
+    Authenication is performed using [Device Authorization Grant](https://oauth.net/2/grant-types/device-code/)
+    type, and requires input from the user.
+
     Example usage:
 
         mermaid_auth = MermaidAuth()

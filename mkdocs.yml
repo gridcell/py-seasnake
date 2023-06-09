@@ -6,7 +6,7 @@ theme:
   repo_name: gridcell/py-seasnake
   repo_url: https://github.com/gridcell/py-seasnake
   # include_homepage_in_sidebar: false
-  logo: img/logo.png
+  # logo: img/logo.png
   features:
     - navigation.tabs
     - navigation.sections

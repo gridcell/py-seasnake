@@ -15,7 +15,7 @@ from seasnake.auth import MermaidAuth
 from seasnake.summaries import FishBeltTransect
 
 auth = MermaidAuth()
-token = auth.request_token()
+token = auth.get_token()
 
 project_id = "<YOUR PROJECT ID>"
 fb = FishBeltTransect(token=token)
